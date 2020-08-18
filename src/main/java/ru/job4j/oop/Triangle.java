@@ -22,15 +22,7 @@ public class Triangle {
 
     public boolean exist(double ab, double ac, double bc) {
 
-        if (ab > ac + bc) {
-            return false;
-        } else if (ac > bc + ab) {
-            return false;
-        } else if (bc > ac + ab) {
-            return false;
-        } else {
-            return true;
-        }
+        return ab < ac + bc && ac < ab + bc && bc < ac + ab;
     }
 
     public double area() {
