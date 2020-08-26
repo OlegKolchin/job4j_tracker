@@ -6,6 +6,7 @@ public class Doctor extends Profession {
 
     public Diagnosis heal(Patient patient) {
 
+        return null;
     }
 
 }
