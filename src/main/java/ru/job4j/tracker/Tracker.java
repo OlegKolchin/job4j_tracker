@@ -56,7 +56,7 @@ public class Tracker {
             items[index] = item;
             item.setId(id);
         }
-        return index != -1 ? true : false;
+        return index != -1;
     }
 
     public boolean delete(int id) {
@@ -64,14 +64,17 @@ public class Tracker {
         int start = index + 1;
         int distPos = index;
         int length = size - index;
-        items[index] = null;
-        System.arraycopy(items, start, items, distPos, length);
-        items[size - 1] = null;
-        size--;
-        return index != -1 ? true : false;
-
-
+        if (index != -1) {
+            items[index] = null;
+            System.arraycopy(items, start, items, distPos, length);
+            items[size - 1] = null;
+            size--;
+        }
+        return index != -1;
     }
 }
+
+
+
 
 
