@@ -6,31 +6,28 @@ public class Matches {
         int matches = 11;
         Scanner input = new Scanner(System.in);
         int select = 0;
-        for (matches = 11; matches > 0; matches -= select) {
-            System.out.println("Осталось спичек - " + matches + System.lineSeparator());
-            System.out.println("Игрок 1, введите число от одного до трех");
+        String name = "Игрок 1";
+        boolean player = true;
+        while (matches > 0) {
+            if (player) {
+                name = "Игрок 1";
+            } else {
+                name = "Игрок 2";
+            }
+            System.out.println("Осталось спичек - " + matches);
+            System.out.print(name + ", введите число от 1 до 3: ");
             select = Integer.valueOf(input.nextLine());
+            System.out.print(System.lineSeparator());
             while (select < 1 || select > 3) {
-                System.out.println("Игрок 1, вы ввели неверное число, повторите ввод");
+                System.out.print(name + ", вы ввели неверное число, повторите ввод: ");
                 select = Integer.valueOf(input.nextLine());
             }
-            for (matches = matches - select; matches > 0; matches -= select) {
-                System.out.println("Осталось спичек - " + matches + System.lineSeparator());
-                System.out.println("Игрок 2, введите число от одного до трех");
-                select = Integer.valueOf(input.nextLine());
-
-                while (select < 1 || select > 3 ) {
-                    System.out.println("Игрок 2, вы ввели неверное число, повторите ввод");
-                    select = Integer.valueOf(input.nextLine());
-                }
-                break;
-                }
-            }
-        System.out.println("Поздравляю, вы победили!");
-
+            matches -= select;
+            player = !player;
         }
-
+        System.out.println(name + ", поздравляю, вы победили!");
     }
+}
 
 
 
