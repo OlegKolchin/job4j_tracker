@@ -25,6 +25,46 @@ public class StartUI {
             } else if (select == 2) {
                 System.out.print("Enter Id of the item: ");
                 int id = Integer.valueOf(scanner.nextLine());
+                System.out.print("Enter new name for the item: ");
+                String name = scanner.nextLine();
+                Item newItem = new Item(name);
+                tracker.replace(id, newItem);
+                if (tracker.replace(id, newItem)) {
+                    System.out.println("Operation is successfully completed");
+                } else {
+                    System.out.println("Operation not completed");
+                }
+            } else if (select == 3) {
+                System.out.print("Enter Id of the item: ");
+                int id = Integer.valueOf(scanner.nextLine());
+                tracker.delete(id);
+                if (tracker.findById(id) == null) {
+                    System.out.println("Operation is successfully completed");
+                } else {
+                    System.out.println("Operation not completed");
+                }
+            } else if (select == 4) {
+                System.out.print("Enter Id of the item: ");
+                int id = Integer.valueOf(scanner.nextLine());
+                Item item = tracker.findById(id);
+                if (item != null) {
+                    System.out.println(item.getId() + " " + item.getName());
+                } else {
+                    System.out.println("Item not found");
+                }
+            } else if (select == 5) {
+                System.out.print("Enter name of the item: ");
+                String name = scanner.nextLine();
+                Item[] items = tracker.findByName(name);
+                if (items.length > 0 ) {
+                    for (Item s : items) {
+                        System.out.println(s.getId() + " " + s.getName());
+                    }
+                } else {
+                    System.out.println("Item does not exist");
+                }
+            } else if (select == 6) {
+                run = false;
             }
         }
     }
