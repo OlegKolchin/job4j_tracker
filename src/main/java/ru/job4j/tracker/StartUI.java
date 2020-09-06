@@ -28,7 +28,6 @@ public class StartUI {
                 System.out.print("Enter new name for the item: ");
                 String name = scanner.nextLine();
                 Item newItem = new Item(name);
-                tracker.replace(id, newItem);
                 if (tracker.replace(id, newItem)) {
                     System.out.println("Operation is successfully completed");
                 } else {
@@ -37,8 +36,7 @@ public class StartUI {
             } else if (select == 3) {
                 System.out.print("Enter Id of the item: ");
                 int id = Integer.valueOf(scanner.nextLine());
-                tracker.delete(id);
-                if (tracker.findById(id) == null) {
+                if (tracker.delete(id)) {
                     System.out.println("Operation is successfully completed");
                 } else {
                     System.out.println("Operation not completed");
