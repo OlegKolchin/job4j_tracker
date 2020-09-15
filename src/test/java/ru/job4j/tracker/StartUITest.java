@@ -11,7 +11,7 @@ public class StartUITest {
     public void whenAddItem() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name", "1"}
+                new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
@@ -31,7 +31,7 @@ public class StartUITest {
         String replacedName = "New item name";
         String id = Integer.toString(item.getId());
         Input in = new StubInput(
-                new String[] {"0", id, replacedName, "1",}
+                new String[]{"0", id, replacedName, "1",}
         );
         UserAction[] actions = {
                 new EditAction(out),
@@ -48,7 +48,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("Deleted item"));
         String id = Integer.toString(item.getId());
         Input in = new StubInput(
-                new String[] {"0", id, "1"}
+                new String[]{"0", id, "1"}
         );
         UserAction[] actions = {
                 new DeleteAction(out),
@@ -57,13 +57,14 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
+
     @Test
     public void whenShowItemsAction() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("item"));
         Input in = new StubInput(
-                new String[] {"0", "1"}
+                new String[]{"0", "1"}
         );
         UserAction[] actions = {
                 new ShowItemsAction(out),
@@ -77,7 +78,8 @@ public class StartUITest {
                         item.getId() + " " + item.getName() + System.lineSeparator() +
                         "Menu" + System.lineSeparator() +
                         "0. === Show all Items ====" + System.lineSeparator() +
-                        "1. === Exit program ====" + System.lineSeparator()));;
+                        "1. === Exit program ====" + System.lineSeparator()));
+
     }
 
     @Test
@@ -87,7 +89,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("item"));
         String id = Integer.toString(item.getId());
         Input in = new StubInput(
-                new String[] {"0", id, "1"}
+                new String[]{"0", id, "1"}
         );
         UserAction[] actions = {
                 new FindItemByIdAction(out),
@@ -101,7 +103,8 @@ public class StartUITest {
                         item.getId() + " " + item.getName() + System.lineSeparator() +
                         "Menu" + System.lineSeparator() +
                         "0. === Find Item by Id ====" + System.lineSeparator() +
-                        "1. === Exit program ====" + System.lineSeparator()));;
+                        "1. === Exit program ====" + System.lineSeparator()));
+
     }
 
     @Test
@@ -110,7 +113,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("item"));
         Input in = new StubInput(
-                new String[] {"0", item.getName(), "1"}
+                new String[]{"0", item.getName(), "1"}
         );
         UserAction[] actions = {
                 new FindItemsByName(out),
@@ -132,7 +135,7 @@ public class StartUITest {
     public void whenExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0"}
+                new String[]{"0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
@@ -145,6 +148,28 @@ public class StartUITest {
         ));
     }
 
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{ "1", "0", "0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new ExitAction()
+        };
+
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                String.format(
+                        "Menu%n"
+                                + "0. === Exit program ====%n"
+                                + "Wrong input, you can select: 0 .. 0%n"
+                                + "Menu%n"
+                                + "0. === Exit program ====%n"
+                )
+        ));
 
 
+    }
 }
