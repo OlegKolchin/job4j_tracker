@@ -13,7 +13,6 @@ public class UserStore {
         if (user == null) {
             throw new UserNotFoundException("User not found");
         }
-
         return user;
     }
 
