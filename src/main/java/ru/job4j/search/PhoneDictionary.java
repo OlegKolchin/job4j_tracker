@@ -9,10 +9,10 @@ public class PhoneDictionary {
     }
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
+        String sls = System.lineSeparator();
         for (Person s : this.persons) {
-            if (s.getName().contains(key) || s.getSurname().contains(key)) {
-                result.add(s);
-            }else if (s.getAddress().contains(key) || s.getPhone().contains(key)) {
+            if ((s.getPhone() + sls + s.getSurname() + sls +
+                    s.getAddress() + sls + s.getName()).contains(key)) {
                 result.add(s);
             }
         }
