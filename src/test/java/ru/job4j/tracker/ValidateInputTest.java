@@ -5,11 +5,10 @@ import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
-
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
-
+import java.util.List;
 
 public class ValidateInputTest {
 
@@ -43,11 +42,11 @@ public class ValidateInputTest {
                 new String[]{ "1", "0", "0"}
         );
         Tracker tracker = new Tracker();
-        UserAction[] actions = {
+        List<UserAction> actions = List.of(
                 new ExitAction()
-        };
+        );
 
-        new StartUI(out).init(in, tracker, Arrays.asList(actions));
+        new StartUI(out).init(in, tracker, actions);
 
         assertThat(out.toString(), Is.is(
                 String.format(
@@ -61,5 +60,6 @@ public class ValidateInputTest {
 
 
     }
+
 
 }

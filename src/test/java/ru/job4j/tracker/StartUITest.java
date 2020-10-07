@@ -2,9 +2,6 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
-
-
-import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.is;
@@ -17,7 +14,7 @@ public class StartUITest {
                 new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
-        List<UserAction> actions = Arrays.asList(
+        List<UserAction> actions = List.of(
                 new CreateAction(out),
                 new ExitAction()
         );
@@ -36,7 +33,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0", id, replacedName, "1",}
         );
-        List<UserAction> actions = Arrays.asList(
+        List<UserAction> actions = List.of(
                 new EditAction(out),
                 new ExitAction()
         );
@@ -53,7 +50,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0", id, "1"}
         );
-        List<UserAction> actions = Arrays.asList(
+        List<UserAction> actions = List.of(
                 new DeleteAction(out),
                 new ExitAction()
         );
@@ -69,7 +66,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0", "1"}
         );
-        List<UserAction> actions = Arrays.asList(
+        List<UserAction> actions = List.of(
                 new ShowItemsAction(out),
                 new ExitAction()
         );
@@ -94,7 +91,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0", id, "1"}
         );
-        List<UserAction> actions = Arrays.asList(
+        List<UserAction> actions = List.of(
                 new FindItemByIdAction(out),
                 new ExitAction()
         );
@@ -118,7 +115,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0", item.getName(), "1"}
         );
-        List<UserAction> actions = Arrays.asList(
+        List<UserAction> actions = List.of(
                 new FindItemsByName(out),
                 new ExitAction()
 
@@ -141,7 +138,7 @@ public class StartUITest {
                 new String[]{"0"}
         );
         Tracker tracker = new Tracker();
-        List<UserAction> actions = Arrays.asList(
+        List<UserAction> actions = List.of(
                 new ExitAction()
         );
         new StartUI(out).init(in, tracker, actions);
@@ -158,7 +155,7 @@ public class StartUITest {
                 new String[]{ "1", "0", "0"}
         );
         Tracker tracker = new Tracker();
-        List<UserAction> actions = Arrays.asList(
+        List<UserAction> actions = List.of(
                 new ExitAction()
         );
 
