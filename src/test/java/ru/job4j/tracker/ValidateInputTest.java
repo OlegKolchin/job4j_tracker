@@ -1,11 +1,15 @@
+
 package ru.job4j.tracker;
 
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
+
 import static org.junit.Assert.assertThat;
+
+import java.util.Arrays;
+
 
 public class ValidateInputTest {
 
@@ -43,7 +47,7 @@ public class ValidateInputTest {
                 new ExitAction()
         };
 
-        new StartUI(out).init(in, tracker, actions);
+        new StartUI(out).init(in, tracker, Arrays.asList(actions));
 
         assertThat(out.toString(), Is.is(
                 String.format(
@@ -57,6 +61,5 @@ public class ValidateInputTest {
 
 
     }
-
 
 }
