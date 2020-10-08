@@ -10,12 +10,12 @@ public class UniqueText {
         for (String s : origin) {
             check.add(s);
         }
-        int i = 0;
+
         for (String s : text) {
-            if (check.contains(s)) {
-                i++;
+            if (!check.contains(s)) {
+                return false;
             }
         }
-        return i == check.size();
+        return true;
     }
 }
