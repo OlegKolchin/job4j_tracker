@@ -25,4 +25,19 @@ public class NotifyAccountTest {
         );
         assertThat(NotifyAccount.sent(accounts), is(expect));
     }
+
+    @Test
+    public void equals() {
+        List<Account> accounts = Arrays.asList(
+                new Account("111", "Oleg", "001"),
+                new Account("111", "Oleg", "001")
+        );
+        HashSet<Account> expect = new HashSet<>(
+                Arrays.asList(
+                new Account("111", "Oleg", "001")
+        )
+        );
+        assertThat(NotifyAccount.sent(accounts), is (expect));
+
+    }
 }
