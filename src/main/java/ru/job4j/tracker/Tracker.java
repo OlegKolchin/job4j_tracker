@@ -7,7 +7,6 @@ public class Tracker {
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
-
     public Item add(Item item) {
         item.setId(ids++);
         items.add(item);
@@ -39,7 +38,7 @@ public class Tracker {
     public List<Item> findByName(String key) {
         List<Item> names = new ArrayList<>();
         for (Item item : items) {
-            if (item.getName().equals(key)){
+            if (item.getName().equals(key)) {
                 names.add(item);
             }
         }

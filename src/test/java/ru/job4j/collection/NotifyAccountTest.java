@@ -37,7 +37,7 @@ public class NotifyAccountTest {
                 new Account("111", "Oleg", "001")
         )
         );
-        assertThat(NotifyAccount.sent(accounts), is (expect));
+        assertThat(NotifyAccount.sent(accounts), is(expect));
 
     }
 }

@@ -8,7 +8,7 @@ public class Find {
         return data[index];
     }
 
-    public static void main (String[]args){
+    public static void main(String[]args) {
         String[] data = {"one", "two", "three"};
         String rsl = Find.get(data, 4);
         System.out.println(rsl);

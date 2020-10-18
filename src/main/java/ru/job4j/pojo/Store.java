@@ -22,7 +22,7 @@ public class Store {
         }
         System.out.println("Shown only product.count > 10");
         for (int index = 0; index < prods.length;
-        index++){
+        index++) {
             Product pr = prods[index];
             if (pr.getCount() > 10) {
                 System.out.println(pr.getName() + " - " + pr.getCount());

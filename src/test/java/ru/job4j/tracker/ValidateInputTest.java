@@ -20,7 +20,7 @@ public class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(out.toString(), is (
+        assertThat(out.toString(), is(
                 "Please enter validate data again." + System.lineSeparator()
         ));
     }
@@ -35,11 +35,12 @@ public class ValidateInputTest {
         int selected = input.askInt("Enter menu:");
         assertThat(selected, is(1));
     }
+
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{ "1", "0", "0"}
+                new String[]{"1", "0", "0"}
         );
         Tracker tracker = new Tracker();
         List<UserAction> actions = List.of(
@@ -57,9 +58,5 @@ public class ValidateInputTest {
                                 + "0. === Exit program ====%n"
                 )
         ));
-
-
     }
-
-
 }

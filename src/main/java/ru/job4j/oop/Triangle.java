@@ -19,7 +19,6 @@ public class Triangle {
 
     }
 
-
     public boolean exist(double ab, double ac, double bc) {
 
         return ab < ac + bc && ac < ab + bc && bc < ac + ab;
@@ -32,7 +31,7 @@ public class Triangle {
         double bc = second.distance(third);
         double p = period(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
-            rsl = sqrt(p * ( p - ab ) * (p - bc) * (p - ac));
+            rsl = sqrt(p * (p - ab) * (p - bc) * (p - ac));
         }
         return rsl;
     }

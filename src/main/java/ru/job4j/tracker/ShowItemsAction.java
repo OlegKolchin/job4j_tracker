@@ -5,9 +5,10 @@ import java.util.List;
 public class ShowItemsAction implements UserAction {
     private final Output out;
 
-    public ShowItemsAction (Output out) {
+    public ShowItemsAction(Output out) {
         this.out = out;
     }
+
     @Override
     public String name() {
         return "=== Show all Items ====";

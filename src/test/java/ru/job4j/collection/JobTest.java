@@ -51,7 +51,8 @@ public class JobTest {
 
     @Test
     public void whenCompareCombine() {
-        Comparator<Job> cmpCombine = new JobDescByNameLn().thenComparing(new JobDescByName()).thenComparing(
+        Comparator<Job> cmpCombine = new JobDescByNameLn().
+                thenComparing(new JobDescByName()).thenComparing(
                 new JobDescByPriority());
         int rsl = cmpCombine.compare(
                 new Job("Alex", 0),

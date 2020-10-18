@@ -11,7 +11,6 @@ public class Profession {
         return name;
     }
 
-
     public String getSurname() {
         return surname;
     }
@@ -20,10 +19,7 @@ public class Profession {
         return education;
     }
 
-    public String getBirthday(){
+    public String getBirthday() {
         return birthday;
     }
-
-
-
 }

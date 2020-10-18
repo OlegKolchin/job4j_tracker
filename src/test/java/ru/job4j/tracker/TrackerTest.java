@@ -9,7 +9,6 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.IsNull.nullValue;
 
-
 public class TrackerTest {
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
@@ -33,6 +32,7 @@ public class TrackerTest {
         tracker.replace(id, bugWithDesc);
         assertThat(tracker.findById(id).getName(), is("Bug with description"));
     }
+
     @Test
     public void whenDelete() {
         Tracker tracker = new Tracker();
@@ -59,6 +59,7 @@ public class TrackerTest {
         assertThat(rsl, is(expect));
 
     }
+
     @Test
     public void sortByName() {
         Tracker tracker = new Tracker();
