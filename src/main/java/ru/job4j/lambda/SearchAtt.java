@@ -1,5 +1,6 @@
 package ru.job4j.lambda;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -43,7 +44,10 @@ public class SearchAtt {
                 new Attachment("five", 100)
         );
         System.out.println(filter(list, x -> x.getSize() < 100 && x.getName().equals("five")));
-
-
     }
+
+    Comparator<String> cmpText = (left, right) ->  {
+        System.out.println("compare - " + left.length() + " : " + right.length());
+        return right.length() - left.length();
+    };
 }
