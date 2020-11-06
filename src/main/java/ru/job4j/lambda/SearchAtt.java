@@ -7,23 +7,23 @@ import java.util.function.Predicate;
 public class SearchAtt {
 
     public static List<Attachment> filterSize(List<Attachment> list) {
-        List<Attachment> rsl = new ArrayList<>();
-        for (Attachment att : list) {
-            if (att.getSize() > 100) {
-                rsl.add(att);
-            }
-        }
-        return rsl;
+        Predicate<Attachment> predicate = new Predicate<Attachment>() {
+            @Override
+            public boolean test(Attachment attachment) {
+                return attachment.getSize() < 100;
+                }
+            };
+        return filter(list, predicate);
     }
 
     public static List<Attachment> filterName(List<Attachment> list) {
-        List<Attachment> rsl = new ArrayList<>();
-        for (Attachment att : list) {
-            if (att.getName().contains("bug")) {
-                rsl.add(att);
+        Predicate<Attachment> predicate = new Predicate<Attachment>() {
+            @Override
+            public boolean test(Attachment attachment) {
+                return attachment.getName().equals("Bob");
             }
-        }
-        return rsl;
+        };
+        return filter(list, predicate);
     }
 
     public static List<Attachment> filter(List<Attachment> list, Predicate<Attachment> predicate) {
@@ -43,7 +43,7 @@ public class SearchAtt {
                 new Attachment("five", 99),
                 new Attachment("five", 100)
         );
-        System.out.println(filter(list, x -> x.getSize() < 100 && x.getName().equals("five")));
+        System.out.println(filterName(list));
     }
 
     Comparator<String> cmpText = (left, right) ->  {
