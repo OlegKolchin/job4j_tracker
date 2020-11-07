@@ -44,10 +44,12 @@ public class SearchAtt {
                 new Attachment("five", 100)
         );
         System.out.println(filterName(list));
+
     }
 
     Comparator<String> cmpText = (left, right) ->  {
         System.out.println("compare - " + left.length() + " : " + right.length());
         return right.length() - left.length();
     };
+
 }
