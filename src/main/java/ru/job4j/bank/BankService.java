@@ -32,11 +32,10 @@ public class BankService {
 //    }
 
     public User findByPassport(String passport) {
-        List <User> rsl = users.keySet().stream()
+        return users.keySet().stream()
                .filter(a -> a.getPassport().equals(passport))
-               .collect(Collectors.toList());
-       return rsl.size() > 0 ? rsl.get(0) : null;
-
+               .findFirst()
+                .orElse(null);
     }
 
 
@@ -55,10 +54,11 @@ public class BankService {
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user != null) {
-            List<Account> rsl = users.get(user).stream()
+            return users.get(user).stream()
                     .filter(a -> a.getRequisite().equals(requisite))
-                    .collect(Collectors.toList());
-            return rsl.get(0);
+                    .findFirst()
+                    .orElse(null);
+
         }
         return null;
     }
