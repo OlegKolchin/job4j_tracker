@@ -70,7 +70,8 @@ public class SchoolTest {
         School sc = new School();
         Student a = new Student(40, "Petrov");
         Student b = new Student(50, "Ivanov");
-        List<Student> list = List.of(a, b);
+        Student c = new Student(70, "Petrov");
+        List<Student> list = List.of(a, b, c);
         Map<String, Student> rsl = new HashMap<>();
         rsl.put(a.getSurname(), a);
         rsl.put(b.getSurname(), b);
