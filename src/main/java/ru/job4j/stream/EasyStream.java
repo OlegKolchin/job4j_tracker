@@ -6,44 +6,55 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class EasyStream {
-    public List<Integer> getList() {
-        return list;
-    }
-
-    public void setList(List<Integer> list) {
-        this.list = list;
-    }
 
     private List<Integer> list;
 
+    public static class Builder {
+        private EasyStream easyStream;
+
+        public Builder () {
+            easyStream = new EasyStream();
+        }
+
+        public EasyStream setField (List<Integer> list) {
+            easyStream.list = list;
+            return easyStream;
+        }
+
+        public EasyStream build() {
+            return easyStream;
+        }
+    }
+
     public static EasyStream of(List<Integer> source) {
-        EasyStream stream = new EasyStream();
-        stream.setList(source);
-        return stream;
+        Builder stream = new EasyStream.Builder();
+        stream.setField(source);
+        return stream.build();
     }
 
     public EasyStream map(Function<Integer, Integer> fun) {
+        Builder stream = new EasyStream.Builder();
         List<Integer> rsl = new ArrayList<>();
         for (Integer a : this.list) {
             rsl.add(fun.apply(a));
         }
-        setList(rsl);
-        return this;
+        stream.setField(rsl);
+        return stream.build();
     }
 
     public EasyStream filter(Predicate<Integer> fun) {
+        Builder stream = new EasyStream.Builder();
         List<Integer> rsl = new ArrayList<>();
         for (Integer a : this.list) {
             if(fun.test(a)) {
                 rsl.add(a);
             }
         }
-        setList(rsl);
-        return this;
+        stream.setField(rsl);
+        return stream.build();
     }
 
     public List<Integer> collect() {
-        return getList();
-
+        return this.list;
     }
 }
