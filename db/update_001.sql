@@ -1,4 +1,4 @@
 create table items(
-	id serrial primary key,
+	id serial primary key,
 	name text
 );
