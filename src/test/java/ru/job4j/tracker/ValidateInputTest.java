@@ -7,7 +7,6 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ValidateInputTest {
@@ -42,7 +41,7 @@ public class ValidateInputTest {
         Input in = new StubInput(
                 new String[]{"1", "0", "0"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = List.of(
                 new ExitAction()
         );
