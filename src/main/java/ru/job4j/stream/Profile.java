@@ -10,6 +10,4 @@ public class Profile {
     public Address getAddress() {
         return address;
     }
-
-
 }

@@ -18,7 +18,7 @@ public class ProfilesTest {
         Profile profile2 = new Profile(address2);
         List<Profile> list = List.of(profile1, profile2);
         List<Address> rsl = List.of(address1, address2);
-        List <Address> expect = profiles.collect(list);
+        List<Address> expect = profiles.collect(list);
         assertThat(rsl, is(expect));
     }
 
@@ -32,7 +32,7 @@ public class ProfilesTest {
         Profile profile3 = new Profile(address1);
         List<Profile> list = List.of(profile1, profile2, profile3);
         List<Address> rsl = List.of(address1, address2);
-        List <Address> expect = profiles.collectUnique(list);
+        List<Address> expect = profiles.collectUnique(list);
         assertThat(rsl, is(expect));
     }
 }

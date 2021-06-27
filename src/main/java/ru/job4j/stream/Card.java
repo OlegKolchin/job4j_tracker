@@ -12,6 +12,7 @@ public class Card {
         this.suit = suit;
         this.value = value;
     }
+
     public List<String> cardList(Card card) {
        return Stream.of(Suit.values())
                 .flatMap(suit -> Stream.of(Value.values()))

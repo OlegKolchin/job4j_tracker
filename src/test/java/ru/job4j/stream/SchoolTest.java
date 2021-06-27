@@ -77,7 +77,5 @@ public class SchoolTest {
         rsl.put(b.getSurname(), b);
         Map<String, Student> expect = sc.convert(list);
         assertThat(rsl, is(expect));
-
-
     }
 }

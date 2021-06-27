@@ -12,11 +12,11 @@ public class EasyStream {
     public static class Builder {
         private EasyStream easyStream;
 
-        public Builder () {
+        public Builder() {
             easyStream = new EasyStream();
         }
 
-        public EasyStream setField (List<Integer> list) {
+        public EasyStream setField(List<Integer> list) {
             easyStream.list = list;
             return easyStream;
         }
@@ -46,7 +46,7 @@ public class EasyStream {
         Builder stream = new EasyStream.Builder();
         List<Integer> rsl = new ArrayList<>();
         for (Integer a : this.list) {
-            if(fun.test(a)) {
+            if (fun.test(a)) {
                 rsl.add(a);
             }
         }

@@ -29,7 +29,6 @@ public class DepDescCompTest {
         assertThat(rsl, lessThan(0));
     }
 
-
     @Test
     public void defaultSort() {
         List<String> input = Arrays.asList("k2", "k1", "k1/sk1", "k2/sk1");

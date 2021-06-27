@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class SearchAtt {
+//    Comparator<String> cmpText = (left, right) ->  {
+//        System.out.println("compare - " + left.length() + " : " + right.length());
+//        return right.length() - left.length();
+//    };
 
     public static List<Attachment> filterSize(List<Attachment> list) {
         Predicate<Attachment> predicate = new Predicate<Attachment>() {
@@ -38,7 +42,7 @@ public class SearchAtt {
     }
 
     public static void main(String[] args) {
-        List<Attachment> list = List.of (
+        List<Attachment> list = List.of(
                 new Attachment("Bob", 100),
                 new Attachment("Bob", 200),
                 new Attachment("five", 99),
@@ -47,10 +51,4 @@ public class SearchAtt {
         System.out.println(filterName(list));
 
     }
-
-    Comparator<String> cmpText = (left, right) ->  {
-        System.out.println("compare - " + left.length() + " : " + right.length());
-        return right.length() - left.length();
-    };
-
 }
