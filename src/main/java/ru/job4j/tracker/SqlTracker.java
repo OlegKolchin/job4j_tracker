@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-import java.io.FileReader;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ public class SqlTracker implements Store {
     private Connection cn;
 
     public void init() {
-        try (FileReader in = new FileReader("c:/projects/job4j_tracker/src/main/java/resources/app.properties")) {
+        try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("hibernate.connection.driver_class"));
@@ -107,17 +107,18 @@ public class SqlTracker implements Store {
     @Override
     public Item findById(int id) {
         String s = String.format("select * from items where id=%s", id);
-        Item item = new Item();
         try (PreparedStatement statement = cn.prepareStatement(s)) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
+                    Item item = new Item();
                     item.setId(resultSet.getInt("id"));
                     item.setName(resultSet.getString("name"));
+                    return item;
                 }
                 }
             } catch (Exception e) {
             e.printStackTrace();
         }
-        return item;
+        return null;
     }
 }
