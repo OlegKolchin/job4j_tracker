@@ -61,29 +61,47 @@ public class SqlTrackerTest {
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
-//    @Test
-//    public void whenReplace() {
-//        SqlTracker tracker = new SqlTracker();
-//        tracker.init();
-//        Item change = new Item("change");
-//        tracker.replace(2, change);
-//        assertThat(tracker.findById(2).getName(), is("change"));
-//    }
-//
-//    @Test
-//    public void whenDelete() {
-//        SqlTracker tracker = new SqlTracker();
-//        tracker.init();
-//        tracker.delete(1);
-//        assertThat(tracker.findById(1), is(nullValue()));
-//    }
+    @Test
+    public void whenReplace() {
+        SqlTracker tracker = new SqlTracker();
+        tracker.init();
+        Item change = new Item("change");
+        tracker.replace(1, change);
+        assertThat(tracker.findById(1).getName(), is("change"));
+    }
 
-//    @Test
-//    public void whenFindAll() {
-//        SqlTracker tracker = new SqlTracker();
-//        tracker.init();
-//        List<Item> items = tracker.findAll();
-//        assertThat(tracker.findByName("change").get(0), is(items.get(0)));
-//    }
+    @Test
+    public void whenFindAll() {
+        SqlTracker tracker = new SqlTracker();
+        tracker.init();
+        List<Item> items = tracker.findAll();
+        assertThat(items.get(0).getName(), is("change"));
+    }
+
+    @Test
+    public void findByName() {
+        SqlTracker tracker = new SqlTracker();
+        tracker.init();
+        List<Item> items = tracker.findByName("change");
+        assertThat(items.get(0).getName(), is("change"));
+    }
+
+    @Test
+    public void findById() {
+        SqlTracker tracker = new SqlTracker();
+        tracker.init();
+        Item item = tracker.findById(1);
+        assertThat(item.getName(), is("change"));
+    }
+
+    @Test
+    public void whenDelete() {
+        SqlTracker tracker = new SqlTracker();
+        tracker.init();
+        Item item = new Item("item2");
+        tracker.add(item);
+        tracker.delete(2);
+        assertThat(tracker.findById(2), is(nullValue()));
+    }
 
 }
