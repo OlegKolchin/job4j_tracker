@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import ru.job4j.tracker.Item;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -54,8 +53,7 @@ public class SqlTrackerTest {
 
     @Test
     public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
-        SqlTracker tracker = new SqlTracker();
-        tracker.init();
+        SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
         tracker.add(item);
         assertThat(tracker.findById(item.getId()), is(item));
@@ -63,45 +61,50 @@ public class SqlTrackerTest {
 
     @Test
     public void whenReplace() {
-        SqlTracker tracker = new SqlTracker();
-        tracker.init();
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
         Item change = new Item("change");
-        tracker.replace(1, change);
-        assertThat(tracker.findById(1).getName(), is("change"));
+        tracker.replace(item.getId(), change);
+        assertThat(tracker.findById(item.getId()).getName(), is("change"));
     }
 
     @Test
     public void whenFindAll() {
-        SqlTracker tracker = new SqlTracker();
-        tracker.init();
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
         List<Item> items = tracker.findAll();
-        assertThat(items.get(0).getName(), is("change"));
+        assertThat(items.get(0), is(item));
     }
 
     @Test
     public void findByName() {
-        SqlTracker tracker = new SqlTracker();
-        tracker.init();
-        List<Item> items = tracker.findByName("change");
-        assertThat(items.get(0).getName(), is("change"));
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        Item second = new Item("second");
+        tracker.add(item);
+        tracker.add(second);
+        List<Item> items = tracker.findByName("second");
+        assertThat(items.get(0).getName(), is("second"));
     }
 
     @Test
     public void findById() {
-        SqlTracker tracker = new SqlTracker();
-        tracker.init();
-        Item item = tracker.findById(1);
-        assertThat(item.getName(), is("change"));
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        Item rsl = tracker.findById(item.getId());
+        assertThat(rsl, is(item));
     }
 
     @Test
     public void whenDelete() {
-        SqlTracker tracker = new SqlTracker();
-        tracker.init();
-        Item item = new Item("item2");
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
         tracker.add(item);
-        tracker.delete(2);
-        assertThat(tracker.findById(2), is(nullValue()));
+        tracker.delete(item.getId());
+        assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
 
 }
